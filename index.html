@@ -6,132 +6,217 @@
   <title>Agarly</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="logo.svg">
-  <link rel="apple-touch-icon" href="logo.svg">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
   <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    body {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Poppins', sans-serif;
-      overflow: hidden;
-      background: linear-gradient(-45deg, #a8d5ba, #8ea9db, #c3f0ca, #a0c4ff);
-      background-size: 400% 400%;
-      animation: gradientMove 12s ease infinite;
+    body{
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:'Poppins',sans-serif;
+      overflow:hidden;
+
+      background: linear-gradient(
+        -45deg,
+        #D7F5FF,
+        #7CC9FF,
+        #5DEBFF,
+        #D7F5FF
+      );
+
+      background-size:400% 400%;
+      animation:gradientMove 12s ease infinite;
     }
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    @keyframes gradientMove{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
     }
 
-    .wrapper {
-      text-align: center;
-      animation: fadeIn 1.5s ease forwards;
-      padding: 20px;
+    /* Watermark */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+
+      background:url("logo.svg") center center no-repeat;
+      background-size:650px;
+
+      opacity:.04;
+      pointer-events:none;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .wrapper{
+      text-align:center;
+      position:relative;
+      z-index:2;
+      padding:20px;
+
+      animation:fadeIn 1.5s ease forwards;
     }
 
-    .logo {
-      width: 240px;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 15px 30px rgba(0,0,0,0.2));
-      transition: transform 0.2s ease, filter 0.3s ease;
-      animation: float 4s ease-in-out infinite;
-      will-change: transform;
-    }
-
-    @keyframes float {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .logo:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
-    }
-
-    h1 {
-      font-size: 30px;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      color: rgba(0,0,0,0.85);
-      margin-bottom: 25px;
-      opacity: 0;
-      animation: textReveal 1.5s ease forwards;
-      animation-delay: 0.5s;
-    }
-
-    @keyframes textReveal {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Progress */
-    .progress-container {
-      width: 220px;
-      height: 6px;
-      background: rgba(0,0,0,0.1);
-      border-radius: 10px;
-      overflow: hidden;
-      margin: auto;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background: rgba(0,0,0,0.6);
-      border-radius: 10px;
-      transition: width 0.1s linear;
-    }
-
-    /* Premium Cursor */
-    .cursor-glass {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.15);
-      box-shadow: 
-        0 0 25px rgba(255,255,255,0.35),
-        inset 0 0 12px rgba(255,255,255,0.25);
-      z-index: 999;
-      transition: transform 0.2s ease;
-    }
-
-    /* Desktop only custom cursor */
-    @media (hover: hover) and (pointer: fine) {
-      body {
-        cursor: none;
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
       }
     }
 
-    /* Mobile */
-    @media(max-width: 600px){
-      .logo { width: 180px; }
-      h1 { font-size: 22px; }
+    .logo{
+      width:280px;
+      margin-bottom:24px;
+
+      filter:
+      drop-shadow(0 10px 25px rgba(93,235,255,.35))
+      drop-shadow(0 20px 40px rgba(15,23,42,.15));
+
+      animation:float 4s ease-in-out infinite;
+
+      transition:
+      transform .25s ease,
+      filter .25s ease;
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0);
+      }
+
+      50%{
+        transform:translateY(-10px);
+      }
+    }
+
+    .logo:hover{
+      transform:scale(1.04);
+    }
+
+    h1{
+      color:#0F172A;
+      font-size:34px;
+      font-weight:600;
+      letter-spacing:1px;
+
+      margin-bottom:28px;
+
+      opacity:0;
+
+      animation:textReveal 1.4s ease forwards;
+      animation-delay:.4s;
+    }
+
+    @keyframes textReveal{
+      from{
+        opacity:0;
+        transform:translateY(12px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .progress-container{
+      width:260px;
+      height:6px;
+
+      background:rgba(15,23,42,.08);
+
+      border-radius:999px;
+      overflow:hidden;
+
+      margin:auto;
+    }
+
+    .progress-bar{
+      width:0%;
+      height:100%;
+
+      background:
+      linear-gradient(
+        90deg,
+        #0F172A,
+        #5DEBFF
+      );
+
+      border-radius:999px;
+      transition:width .1s linear;
+    }
+
+    /* Premium Cursor */
+
+    .cursor-glass{
+      position:fixed;
+      top:0;
+      left:0;
+
+      width:60px;
+      height:60px;
+
+      border-radius:50%;
+
+      pointer-events:none;
+
+      transform:translate(-50%,-50%);
+
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+
+      background:rgba(215,245,255,.25);
+
+      box-shadow:
+      0 0 30px rgba(93,235,255,.45),
+      inset 0 0 15px rgba(255,255,255,.4);
+
+      z-index:999;
+
+      transition:transform .2s ease;
+    }
+
+    @media (hover:hover) and (pointer:fine){
+      body{
+        cursor:none;
+      }
+    }
+
+    @media(max-width:768px){
+
+      .logo{
+        width:220px;
+      }
+
+      h1{
+        font-size:26px;
+      }
+
+      .progress-container{
+        width:220px;
+      }
+
+      .cursor-glass{
+        display:none;
+      }
+
+      body{
+        cursor:auto;
+      }
     }
 
   </style>
@@ -140,46 +225,70 @@
 <body>
 
   <div class="wrapper">
-    <img src="logo.svg" class="logo" id="logo" alt="Agarly Logo">
-    <h1>We’re almost ready… are you?</h1>
+
+    <img
+      src="logo.svg"
+      alt="Agarly Logo"
+      class="logo"
+      id="logo"
+    >
+
+    <h1>We’re almost ready... are you?</h1>
 
     <div class="progress-container">
       <div class="progress-bar" id="progressBar"></div>
     </div>
+
   </div>
 
   <div class="cursor-glass" id="cursorGlass"></div>
 
   <script>
-    // Progress animation
+
+    /* Progress */
+
     let progress = 0;
+
     const bar = document.getElementById("progressBar");
 
     const interval = setInterval(() => {
-      progress += 1;
-      bar.style.width = progress + "%";
-      if(progress >= 100) clearInterval(interval);
-    }, 30);
 
-    // Cursor (desktop only)
+      progress++;
+
+      bar.style.width = progress + "%";
+
+      if(progress >= 100){
+        clearInterval(interval);
+      }
+
+    },30);
+
+    /* Cursor */
+
     const cursor = document.getElementById("cursorGlass");
 
-    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    if(window.matchMedia("(hover:hover) and (pointer:fine)").matches){
 
-      let mouseX = 0, mouseY = 0;
-      let currentX = 0, currentY = 0;
+      let mouseX = 0;
+      let mouseY = 0;
 
-      document.addEventListener("mousemove", (e) => {
+      let currentX = 0;
+      let currentY = 0;
+
+      document.addEventListener("mousemove",(e)=>{
+
         mouseX = e.clientX;
         mouseY = e.clientY;
+
       });
 
-      function animateCursor() {
-        currentX += (mouseX - currentX) * 0.15;
-        currentY += (mouseY - currentY) * 0.15;
+      function animateCursor(){
+
+        currentX += (mouseX-currentX)*0.15;
+        currentY += (mouseY-currentY)*0.15;
 
         cursor.style.left = currentX + "px";
-        cursor.style.top = currentY + "px";
+        cursor.style.top  = currentY + "px";
 
         requestAnimationFrame(animateCursor);
       }
@@ -188,25 +297,20 @@
 
       const logo = document.getElementById("logo");
 
-      // Hover scale
-      logo.addEventListener("mouseenter", () => {
-        cursor.style.transform = "translate(-50%, -50%) scale(1.4)";
+      logo.addEventListener("mouseenter",()=>{
+
+        cursor.style.transform =
+        "translate(-50%,-50%) scale(1.4)";
+
       });
 
-      logo.addEventListener("mouseleave", () => {
-        cursor.style.transform = "translate(-50%, -50%) scale(1)";
+      logo.addEventListener("mouseleave",()=>{
+
+        cursor.style.transform =
+        "translate(-50%,-50%) scale(1)";
+
       });
 
-      // Parallax
-      document.addEventListener("mousemove", (e) => {
-        const x = (window.innerWidth / 2 - e.clientX) / 40;
-        const y = (window.innerHeight / 2 - e.clientY) / 40;
-
-        logo.style.transform = `translate(${x}px, ${y}px)`;
-      });
-
-    } else {
-      cursor.style.display = "none";
     }
 
   </script>
